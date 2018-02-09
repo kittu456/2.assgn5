@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+class bubsort{
+	int arr[MAX], n; //defining the array
+	public: 
+	void getdata();  //making two functions
+	void sort();
+}
+// getting input
+void bubsort:: getdata(){
+	cout<< "How many elements do you require\n";
+	cin >> n;
+	for(int i=0; i<n; i++){
+		cin >> arr[i] >>" ";
+	}
+}
+// sorting the array 
+void bubsort:: sort(){
+	int temp;
+	for(int i=0; i<n; i++){ //controls the number of cycles of the sort
+		for(int j = 0; j<n; j++){  //controls the number of swappings
+			if(arr[j]>arr[j+i]){
+				temp = arr[j];
+				arr[j]; = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+	for(int k=0; k<n; k++){//Displaying sorted array
+		cout<<arr[k]<<",";
+	}
+	cout<<endl;
+}
+
+int main() {
+	bubsort obj;
+	obj.getdata; //calling the function to get the data
+	cout << "This is the sorted array";
+	obj.sort();  //calling the function to ort array
+	
+	
+	return 0;
+}
