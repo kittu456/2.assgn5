@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+class QuickSort{
+    public:
+        int no_of_elements;
+        int elements[10];
+    public:
+        void getarray();
+        void sortit(int [], int, int);
+        void partition(int [],int ,int,int&);
+        void display();
+};
+void QuickSort::getarray(){
+    cout<<"How many elements?: ";
+    cin>>no_of_elements;
+    cout<<"Insert array of element to sort: ";
+    for(int i=0;i<no_of_elements;i++){
+        cin>>elements[i];
+    }
+}
+void QuickSort::sortit(int x[], int lb, int ub){
+    int j;
+    if(lb >= ub)
+    return;
+    display();
+    partition(x,lb,ub,j);
+    sortit(x,lb,j-1);
+    sortit(x,j+1,ub);
+}
+void QuickSort::partition(int x[],int lb,int ub,int &pj){
+    int a, down, temp, up;
+    a = x[lb];
+    up = ub;
+    down = lb;
+    while(down < up){
+        while(x[down] <= a)
+            down++;
+        while(x[up]  > a)
+            up--;
+        if(down < up){
+            temp = x[down];
+            x[down] = x[up];
+            x[up] = temp;
+        }
+    }
+    x[lb] = x[up];
+    x[up] = a;
+    pj = up;
+}
+void QuickSort::display(){
+    for(int i = 0 ; i < no_of_elements; i++){
+        cout<<elements[i]<<" ";
+    }
+    cout<<endl;
+}
+int main(){
+    QuickSort QS;
+    QS.getarray();
+    cout<<"Sorting is given in step by step showing each iteration"<<endl;
+    QS.sortit(QS.elements,0,QS.no_of_elements-1);
+    QS.display();
+    return 0;
+}
